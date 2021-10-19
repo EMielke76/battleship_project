@@ -4,6 +4,6 @@
 **Link to Miro Board**
 [Nerf-Based Aquatic Warfare](https://miro.com/app/dashboard/)
 
-##**THIS SPACE INTENTIONALLY LEFT BLANK**
 
-####A place to leave one another notes!
+
+A place to leave one another notes!
