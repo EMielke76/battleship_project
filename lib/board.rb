@@ -25,5 +25,9 @@ attr_reader :cells
 
   def valid_coordinate?(coordinate)
     @cells.has_key?(coordinate)
-  end  
+  end
+
+  def valid_placement?(ship, coordinates)
+    ship.length == coordinates.length
+    end
 end
