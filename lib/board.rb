@@ -1,8 +1,10 @@
 class Board
 
-attr_reader :cells
+attr_reader :cells, :valid_horizontal, :valid_vertical
 
   def initialize
+    @valid_horizontal =
+    @valid_vertical =
     @cells = {
       "A1" => Cell.new("A1"),
       "A2" => Cell.new("A2"),
@@ -29,5 +31,8 @@ attr_reader :cells
 
   def valid_placement?(ship, coordinates)
     ship.length == coordinates.length
+
+    if @cells.keys.each_con(3) do
+
     end
 end
