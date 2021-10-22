@@ -3,8 +3,6 @@ class Board
 attr_reader :cells, :valid_horizontal, :valid_vertical
 
   def initialize
-    @valid_horizontal =
-    @valid_vertical =
     @cells = {
       "A1" => Cell.new("A1"),
       "A2" => Cell.new("A2"),
@@ -23,6 +21,9 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
       "D3" => Cell.new("D3"),
       "D4" => Cell.new("D4"),
     }
+    @valid_vertical = []
+    @cells.keys.each_cons(3) {|a| @valid_horizontal.push(a) }
+    @cells.keys.each_cons(2) {|a| @valid_horizontal.push(a) }
   end
 
   def valid_coordinate?(coordinate)
@@ -30,9 +31,8 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
   end
 
   def valid_placement?(ship, coordinates)
+    if coordinates == coordinates.sort
     ship.length == coordinates.length
-
-    if @cells.keys.each_con(3) do
 
     end
 end
