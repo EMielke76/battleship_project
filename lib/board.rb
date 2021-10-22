@@ -22,4 +22,8 @@ attr_reader :cells
       "D4" => Cell.new("D4"),
     }
   end
+
+  def valid_coordinate?(coordinate)
+    @cells.has_key?(coordinate)
+  end  
 end
