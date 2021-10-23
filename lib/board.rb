@@ -40,6 +40,10 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
       true #letters are the same && numbers are sequential
     elsif (letters.min..letters.max).to_a == letters && numbers.uniq.length == 1
       true #letters are uniqiue and sequential && numbers are the same
+    elsif (letters.min..letters.max).to_a == letters && (numbers.min..numbers.max).to_a == numbers
+      false #Letters are sequential && numbers are sequential
+    elsif letters.uniq.length == 1 && numbers.uniq.length == numbers
+      false #letters are the same, numbers are the same
     else
       false
     end
