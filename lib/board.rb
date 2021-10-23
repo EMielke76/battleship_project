@@ -21,9 +21,9 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
       "D3" => Cell.new("D3"),
       "D4" => Cell.new("D4"),
     }
-    @valid_vertical = []
-    @cells.keys.each_cons(3) {|a| @valid_horizontal.push(a) }
-    @cells.keys.each_cons(2) {|a| @valid_horizontal.push(a) }
+    # @valid_vertical = []
+    # @cells.keys.each_cons(3) {|a| @valid_horizontal.push(a) }
+    # @cells.keys.each_cons(2) {|a| @valid_horizontal.push(a) }
   end
 
   def valid_coordinate?(coordinate)
@@ -31,8 +31,21 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
   end
 
   def valid_placement?(ship, coordinates)
-    if coordinates == coordinates.sort
-    ship.length == coordinates.length
-
+    letters = coordinates.map {|coordinate| coordinate[0]}
+    numbers = coordinates.map {|coordinate| coordinate[1].to_i}
+    # require "pry"; binding.pry
+    if ship.length != coordinates.length
+      false
+    elsif letters.uniq.length == 1 && (numbers.min..numbers.max).to_a == numbers
+      true #letters are the same && numbers are sequential
+    elsif (letters.min..letters.max).to_a == letters && numbers.uniq.length == 1
+      true #letters are uniqiue and sequential && numbers are the same
+    elsif (letters.min..letters.max).to_a == letters && (numbers.min..numbers.max).to_a == numbers
+      false #Letters are sequential && numbers are sequential
+    elsif letters.uniq.length == 1 && numbers.uniq.length == numbers
+      false #letters are the same, numbers are the same
+    else
+      false
     end
+  end
 end
