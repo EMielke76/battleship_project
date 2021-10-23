@@ -48,4 +48,13 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
       false
     end
   end
-end
+
+  def place(ship, coordinates)
+    coordinates.map do |coordinate|
+      @cells.each_pair do |coordinate, cell|
+        coordinate = cell.place_ship(ship)
+
+        end
+      end
+    end
+  end
