@@ -1,6 +1,6 @@
 class Board
 
-attr_reader :cells, :valid_horizontal, :valid_vertical
+attr_reader :cells, :valid_horizontal, :valid_vertical, :used_coordinates
 
   def initialize
     @cells = {
@@ -21,9 +21,8 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
       "D3" => Cell.new("D3"),
       "D4" => Cell.new("D4"),
     }
-    # @valid_vertical = []
-    # @cells.keys.each_cons(3) {|a| @valid_horizontal.push(a) }
-    # @cells.keys.each_cons(2) {|a| @valid_horizontal.push(a) }
+    @used_coordinates = []
+
   end
 
   def valid_coordinate?(coordinate)
@@ -33,12 +32,15 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
   def valid_placement?(ship, coordinates)
     letters = coordinates.map {|coordinate| coordinate[0]}
     numbers = coordinates.map {|coordinate| coordinate[1].to_i}
-    # require "pry"; binding.pry
+    #require "pry"; binding.pry
     if ship.length != coordinates.length
+      false
+    elsif @used_coordinates.include?(coordinates)
       false
     elsif letters.uniq.length == 1 && (numbers.min..numbers.max).to_a == numbers
       true #letters are the same && numbers are sequential
     elsif (letters.min..letters.max).to_a == letters && numbers.uniq.length == 1
+      used_coordinates << coordinates
       true #letters are uniqiue and sequential && numbers are the same
     elsif (letters.min..letters.max).to_a == letters && (numbers.min..numbers.max).to_a == numbers
       false #Letters are sequential && numbers are sequential
@@ -47,6 +49,7 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
     else
       false
     end
+
   end
 
   def place(ship, coordinates)
@@ -54,7 +57,9 @@ attr_reader :cells, :valid_horizontal, :valid_vertical
       @cells.each_pair do |coordinate, cell|
         coordinate = cell.place_ship(ship)
 
+        @used_coordinates << coordinate
         end
       end
+      require "pry"; binding.pry
     end
   end
