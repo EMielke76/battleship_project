@@ -19,4 +19,16 @@ class Computer
   def combined_select
     letter_select + number_select
   end
+
+  def cruiser_coordinates
+    cruiser_coordinates = []
+    until cruiser_coordinates.length == 3 do
+      combined_select
+      if @board.valid_coordinate?(combined_select)
+        cruiser_coordinates << combined_select
+      end
+    end
+    return cruiser_coordinates
+  end
+
 end

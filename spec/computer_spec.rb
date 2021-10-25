@@ -53,5 +53,6 @@ describe '#place_cruiser' do
     computer = Computer.new(board)
 
     expect(computer.cruiser_coordinates).to be_a(Array)
+    expect(computer.cruiser_coordinates.length).to eq(3)
   end
 end
