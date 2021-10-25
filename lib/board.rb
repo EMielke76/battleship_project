@@ -21,8 +21,6 @@ attr_reader :cells, :valid_horizontal, :valid_vertical, :used_coordinates
       "D3" => Cell.new("D3"),
       "D4" => Cell.new("D4"),
     }
-    @used_coordinates = []
-
   end
 
   def valid_coordinate?(coordinate)
@@ -32,9 +30,11 @@ attr_reader :cells, :valid_horizontal, :valid_vertical, :used_coordinates
   def valid_placement?(ship, coordinates)
     letters = coordinates.map {|coordinate| coordinate[0]}
     numbers = coordinates.map {|coordinate| coordinate[1].to_i}
+    occupied_coordinates = coordinates.map {|coordinate| @cells[coordinate].empty?}
     if ship.length != coordinates.length
+
       false
-    elsif @used_coordinates.include?(coordinates)
+    elsif occupied_coordinates.include?(false) == true
       false
     elsif letters.uniq.length == 1 && (numbers.min..numbers.max).to_a == numbers
       true #letters are the same && numbers are sequential
@@ -51,9 +51,7 @@ attr_reader :cells, :valid_horizontal, :valid_vertical, :used_coordinates
 
   def place(ship, coordinates)
     coordinates.map do |coordinate|
-
       @cells[coordinate].place_ship(ship)
-      #require "pry"; binding.pry
     end
   end
 end
