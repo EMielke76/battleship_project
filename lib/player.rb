@@ -7,5 +7,6 @@ class Player
     end
 
     def ship_placement
-      
+    end 
+
 end
