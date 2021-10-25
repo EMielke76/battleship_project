@@ -53,5 +53,16 @@ describe '#place_cruiser' do
     computer = Computer.new(board)
 
     expect(computer.cruiser_coordinates).to be_a(Array)
+    expect(computer.cruiser_coordinates.length).to eq(3)
+  end
+end
+
+describe '#submarine' do
+  it 'can create coordinates for a submarine' do
+    board = Board.new
+    computer = Computer.new(board)
+
+    expect(computer.submarine_coordinates).to be_a(Array)
+    expect(computer.submarine_coordinates.length).to eq(2)
   end
 end
