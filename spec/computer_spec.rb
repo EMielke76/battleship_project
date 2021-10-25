@@ -1,7 +1,7 @@
 require './lib/board'
 require './lib/ship'
 require './lib/cell'
-require './lib/computer'
+require './lib/player'
 
 describe 'Computer' do
   it 'exists' do
