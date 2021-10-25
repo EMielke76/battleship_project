@@ -31,4 +31,14 @@ class Computer
     return cruiser_coordinates
   end
 
+  def submarine_coordinates
+    submarine_coordinates = []
+    until submarine_coordinates.length == 2 do
+      combined_select
+      if @board.valid_coordinate?(combined_select)
+        submarine_coordinates << combined_select
+      end
+    end
+    return submarine_coordinates
+  end
 end
