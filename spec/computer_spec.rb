@@ -54,6 +54,7 @@ describe '#place_cruiser' do
 
     expect(computer.cruiser_coordinates).to be_a(Array)
     expect(computer.cruiser_coordinates.length).to eq(3)
+    expect(computer.cruiser_coordinates)
   end
 end
 
@@ -65,4 +66,15 @@ describe '#submarine' do
     expect(computer.submarine_coordinates).to be_a(Array)
     expect(computer.submarine_coordinates.length).to eq(2)
   end
+
+describe '#place_ship' do
+  it 'validates and places a ship' do
+    board = Board.new
+    computer = Computer.new(board)
+
+
+    expect(computer.place_ship(cruiser, ["A1", "A2"]).to eq(false)
+
+  end
+end
 end
