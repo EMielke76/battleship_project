@@ -1,9 +1,10 @@
+
 class Computer
 
-  attr_reader :board, :submarine
+  attr_accessor :computer_board
 
   def initialize(board)
-    @board = board
+    @computer_board = board
     @cruiser = Ship.new('cruiser', 3)
     @submarine = Ship.new('Submarine', 2)
   end
@@ -30,8 +31,8 @@ class Computer
       end
       #require "pry"; binding.pry
       cruiser_coordinates.sort
-      if @board.valid_placement?(@cruiser, cruiser_coordinates) == true
-        @board.place(@cruiser, cruiser_coordinates)
+      if @computer_board.valid_placement?(@cruiser, cruiser_coordinates) == true
+        @computer_board.place(@cruiser, cruiser_coordinates)
         break
       end
     end
@@ -47,8 +48,8 @@ class Computer
       end
       #require "pry"; binding.pry
       submarine_coordinates.sort
-      if @board.valid_placement?(@submarine, submarine_coordinates) == true
-        @board.place(@submarine, submarine_coordinates)
+      if @computer_board.valid_placement?(@submarine, submarine_coordinates) == true
+        @computer_board.place(@submarine, submarine_coordinates)
         break
       end
     end
