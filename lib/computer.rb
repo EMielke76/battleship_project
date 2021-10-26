@@ -54,4 +54,18 @@ class Computer
       end
     end
   end
+
+
+
+  def shoot_at(player)
+    loop do
+      shot = combined_select
+      # if player.player_board.valid_coordinate?(shot) == false
+      if player.player_board.cells[shot].fired_upon? == true
+        redo
+      else player.player_board.cells[shot].fire_upon
+        break
+      end
+    end
+  end
 end

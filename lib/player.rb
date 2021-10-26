@@ -65,7 +65,7 @@ class Player
     puts @player_board.render(true)
     puts "Take your shot! Enter a coordinate you wish to \n" +
     "fire upon!"
-    shot = gets.chomp
+    shot = gets.chomp.upcase
     loop do
       if computer.computer_board.valid_coordinate?(shot) == false
         puts "That coordinate is invalid. Please try again!"
@@ -84,5 +84,6 @@ class Player
       puts "Miss!"
     end
     puts computer.computer_board.render
+    puts @player_board.render(true)
   end
 end

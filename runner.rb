@@ -16,3 +16,5 @@ player = Player.new(player_board)
 
 player.ship_placement
 player.shoot_at(computer)
+
+computer.shoot_at(player)
