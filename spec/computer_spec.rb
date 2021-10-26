@@ -31,10 +31,10 @@ describe '#place_ship' do
   end
 
   it 'can combine random pick into a single string' do
-  board = Board.new
-  computer = Computer.new(board)
+    board = Board.new
+    computer = Computer.new(board)
 
-  expect(computer.combined_select).to be_a(String)
+    expect(computer.combined_select).to be_a(String)
   end
 
   it 'can validate a combined_selection' do
@@ -45,36 +45,20 @@ describe '#place_ship' do
     combined_2 = "F5"
     expect(computer.board.valid_coordinate?(combined_2)).to eq(false)
   end
-end
 
-describe '#place_cruiser' do
-  it 'can create coordinates for a cruiser' do
-    board = Board.new
-    computer = Computer.new(board)
+  describe '#place_cruiser' do
+    it 'places a cruiser if successful coordinates generated' do
+      board = Board.new
+      computer = Computer.new(board)
+      computer.place_cruiser
+      expect(board.cells.empty?).to eq(false)
+    end
 
-    expect(computer.cruiser_coordinates).to be_a(Array)
-    expect(computer.cruiser_coordinates.length).to eq(3)
-    expect(computer.cruiser_coordinates)
+    it 'places a submarine if successful coordinates generated' do
+      board = Board.new
+      computer = Computer.new(board)
+      computer.place_submarine
+      expect(board.cells.empty?).to eq(false)
+    end
   end
-end
-
-describe '#submarine' do
-  it 'can create coordinates for a submarine' do
-    board = Board.new
-    computer = Computer.new(board)
-
-    expect(computer.submarine_coordinates).to be_a(Array)
-    expect(computer.submarine_coordinates.length).to eq(2)
-  end
-
-describe '#place_ship' do
-  it 'validates and places a ship' do
-    board = Board.new
-    computer = Computer.new(board)
-
-
-    expect(computer.place_ship(cruiser, ["A1", "A2"]).to eq(false)
-
-  end
-end
 end
