@@ -4,7 +4,7 @@ class Computer
 
   def initialize(board)
     @board = board
-    @cruiser = Ship.new('Cruiser', 3)
+    @cruiser = Ship.new('cruiser', 3)
     @submarine = Ship.new('Submarine', 2)
   end
 
