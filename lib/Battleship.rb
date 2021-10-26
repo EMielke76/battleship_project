@@ -12,4 +12,7 @@ class Battleship
       puts "Okay bye!"
     end
   end
+
+
+
 end
