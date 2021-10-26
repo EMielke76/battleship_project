@@ -1,11 +1,11 @@
 class Computer
 
-  attr_reader :board, :cruiser, :submarine
+  attr_reader :board, :submarine
 
   def initialize(board)
     @board = board
-    @cruiser = Ship.new('cruiser', 3)
-    @submarine = Ship.new('submarine', 2)
+    @cruiser = Ship.new('Cruiser', 3)
+    @submarine = Ship.new('Submarine', 2)
   end
 
   def letter_select
@@ -22,35 +22,35 @@ class Computer
     letter_select + number_select
   end
 
-  def cruiser_coordinates
-    cruiser_coordinates = []
-    until cruiser_coordinates.length == 3 do
-      combined_select
-      if @board.valid_coordinate?(combined_select)
+  def place_cruiser
+    loop do
+      cruiser_coordinates = []
+      @cruiser.length.times do
         cruiser_coordinates << combined_select
       end
-    end
-    return cruiser_coordinates
-  end
-
-  def submarine_coordinates
-    submarine_coordinates = []
-    submarine_coordinates.length == 2 && submarine_coordinates.valid_placement(ship, coordinates) do
-      combined_select
-      if @board.valid_coordinate?(combined_select)
-        submarine_coordinates << combined_select
+      #require "pry"; binding.pry
+      cruiser_coordinates.sort
+      if @board.valid_placement?(@cruiser, cruiser_coordinates) == true
+        @board.place(@cruiser, cruiser_coordinates)
+        break
       end
     end
-    return submarine_coordinates
   end
 
-  def place_ship(ship, coordinates)
-    if @board.valid_placement?(ship, coordinates) == false
-
-    else @board.valid_placement?(ship, coordinates) == true
-        @board.place(ship, coordinates)
 
 
-
+  def place_submarine
+    loop do
+      submarine_coordinates = []
+      @submarine.length.times do
+        submarine_coordinates << combined_select
+      end
+      #require "pry"; binding.pry
+      submarine_coordinates.sort
+      if @board.valid_placement?(@submarine, submarine_coordinates) == true
+        @board.place(@submarine, submarine_coordinates)
+        break
+      end
+    end
   end
 end
