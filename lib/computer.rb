@@ -66,6 +66,7 @@ class Computer
       else player.player_board.cells[shot].fire_upon
         if player.player_board.cells[shot].empty? == false
           puts "The computer scored a HIT!"
+        end 
         break
       end
     end
