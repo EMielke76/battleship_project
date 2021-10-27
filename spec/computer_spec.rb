@@ -41,9 +41,9 @@ describe '#place_ship' do
     board = Board.new
     computer = Computer.new(board)
     combined_selection = "A4"
-    expect(computer.board.valid_coordinate?(combined_selection)).to eq(true)
+    expect(computer.computer_board.valid_coordinate?(combined_selection)).to eq(true)
     combined_2 = "F5"
-    expect(computer.board.valid_coordinate?(combined_2)).to eq(false)
+    expect(computer.computer_board.valid_coordinate?(combined_2)).to eq(false)
   end
 
   describe '#place_cruiser' do

@@ -22,7 +22,13 @@ class Player
     loop do
       cruiser_coordinates = []
       @cruiser.length.times do
-        cruiser_coordinates << gets.chomp.upcase
+      coordinate = gets.chomp.upcase
+        if @player_board.valid_coordinate?(coordinate) == false
+          puts "That coordinate is invalid. Try again!"
+          redo
+        else
+          cruiser_coordinates << coordinate
+        end
       end
 
       cruiser_coordinates.sort
@@ -41,7 +47,13 @@ class Player
     loop do
       submarine_coordinates = []
       @submarine.length.times do
-        submarine_coordinates << gets.chomp.upcase
+        coordinate = gets.chomp.upcase
+          if @player_board.valid_coordinate?(coordinate) == false
+            puts "That coordinate is invalid. Try again!"
+            redo
+          else
+            submarine_coordinates << coordinate
+          end
       end
 
       submarine_coordinates.sort
@@ -66,26 +78,32 @@ class Player
     puts @player_board.render(true)
     puts "Take your shot! Enter a coordinate you wish to \n" +
     "fire upon!"
-    shot = gets.chomp.upcase
     loop do
+      shot = gets.chomp.upcase
       if computer.computer_board.valid_coordinate?(shot) == false
         puts "That coordinate is invalid. Please try again!"
+        redo
+        break
       end
       if computer.computer_board.cells[shot].fired_upon? == true
         puts "You've already taken that shot. Please try again"
-      end
-      if computer.computer_board.valid_coordinate?(shot) == true
-        computer.computer_board.cells[shot].fire_upon
+        redo
         break
       end
-    end
-    if computer.computer_board.cells[shot].empty? == false
-      puts "** Hit! **"
-      if computer.computer_board.cells[shot].ship.sunk? == true
-        puts " *$* You made it pull a Titanic! It gone. *$*"
+      if computer.computer_board.valid_coordinate?(shot) == true
+         computer.computer_board.cells[shot].fire_upon
+        if computer.computer_board.cells[shot].empty? == false
+           puts "** Hit on #{shot}! **"
+            if computer.computer_board.cells[shot].ship.sunk? == true
+               puts " *$* You made it pull a Titanic! It gone. *$*"
+               break
+            end
+          break
+        end
+      else
+        puts "Miss!"
+        break
       end
-    else
-      puts "Miss!"
     end
   end
 end
