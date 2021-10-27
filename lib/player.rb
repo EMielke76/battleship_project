@@ -2,7 +2,7 @@ require './lib/computer'
 
 class Player
 
-  attr_accessor :player_board
+  attr_accessor :player_board, :cruiser, :submarine
 
   def initialize(board)
     @player_board = board

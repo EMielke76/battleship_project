@@ -1,7 +1,7 @@
 
 class Computer
 
-  attr_accessor :computer_board
+  attr_accessor :computer_board, :cruiser, :submarine
 
   def initialize(board)
     @computer_board = board
