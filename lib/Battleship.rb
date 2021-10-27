@@ -41,6 +41,11 @@ class Battleship
     else @turn.computer.cruiser.sunk? == true && @turn.computer.submarine.sunk? == true
       puts "You won! You now reign as King of the Computers. J/k this is a mod 1 project.. so congrats on that."
     end
-  greeting
+  new_game
   end
+end
+
+def new_game
+  battleship_2 = Battleship.new
+  battleship_2.greeting
 end
