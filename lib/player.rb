@@ -70,40 +70,4 @@ class Player
     puts @player_board.render(true)
     puts '### THE TITANIC CALLED ###'
   end
-
-  def shoot_at(computer)
-    puts "*$*"*3 + " Computer Board " + "*$*"*3
-    puts computer.computer_board.render
-    puts "-*-"*3 +" Your Board " + "-*-"*3
-    puts @player_board.render(true)
-    puts "Take your shot! Enter a coordinate you wish to \n" +
-    "fire upon!"
-    loop do
-      shot = gets.chomp.upcase
-      if computer.computer_board.valid_coordinate?(shot) == false
-        puts "That coordinate is invalid. Please try again!"
-        redo
-        break
-      end
-      if computer.computer_board.cells[shot].fired_upon? == true
-        puts "You've already taken that shot. Please try again"
-        redo
-        break
-      end
-      if computer.computer_board.valid_coordinate?(shot) == true
-         computer.computer_board.cells[shot].fire_upon
-        if computer.computer_board.cells[shot].empty? == false
-           puts "** Hit on #{shot}! **"
-            if computer.computer_board.cells[shot].ship.sunk? == true
-               puts " *$* You made it pull a Titanic! It gone. *$*"
-               break
-            end
-          break
-        end
-      else
-        puts "Miss!"
-        break
-      end
-    end
-  end
 end

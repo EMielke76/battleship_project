@@ -1,14 +1,12 @@
 class Battleship
-  attr_reader :player_board,
-              :computer_board,
-              :computer,
-              :player
+  attr_reader :turn
 
   def initialize
-    @player_board = Board.new
-    @computer_board = Board.new
-    @computer = Computer.new(@computer_board)
-    @player = Player.new(@player_board)
+    @turn = Turn.new
+    # @player_board = Board.new
+    # @computer_board = Board.new
+    # @computer = Computer.new(@computer_board)
+    # @player = Player.new(@player_board)
   end
 
 
@@ -25,25 +23,26 @@ class Battleship
   end
 
   def game_play
-    computer.place_cruiser
-    computer.place_submarine
-    player.ship_placement
-    until winning?(computer, player) do
-      player.shoot_at(computer)
-      computer.shoot_at(player)
+    @turn.computer.place_cruiser
+    @turn.computer.place_submarine
+    @turn.player.ship_placement
+    until winning? do
+      @turn.turn_prompt
+      @turn.shot_call#.shoot_at(computer)
+      @turn.shoot_at_player
     end
 
-    end_game(computer, player)
+    end_game
   end
 
-  def winning?(computer, player)
-    player.cruiser.sunk? == true && player.submarine.sunk? == true || computer.cruiser.sunk? == true && computer.submarine.sunk? == true
+  def winning?
+    @turn.player.cruiser.sunk? == true && @turn.player.submarine.sunk? == true || @turn.computer.cruiser.sunk? == true && @turn.computer.submarine.sunk? == true
   end
 
-  def end_game(computer, player)
-    if player.cruiser.sunk? == true && player.submarine.sunk? == true
+  def end_game
+    if @turn.player.cruiser.sunk? == true && @turn.player.submarine.sunk? == true
       puts "The computer won! Play again soon!"
-    else computer.cruiser.sunk? == true && computer.submarine.sunk? == true
+    else @turn.computer.cruiser.sunk? == true && @turn.computer.submarine.sunk? == true
       puts "You won! You now reign as King of the Computers. J/k this is a mod 1 project.. so congrats on that."
     end
   greeting

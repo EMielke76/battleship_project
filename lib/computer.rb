@@ -54,26 +54,4 @@ class Computer
       end
     end
   end
-
-
-
-  def shoot_at(player)
-    loop do
-      shot = combined_select
-      # if player.player_board.valid_coordinate?(shot) == false
-      if player.player_board.cells[shot].fired_upon? == true
-         redo
-      else player.player_board.cells[shot].fire_upon
-        if player.player_board.cells[shot].empty? == false
-          puts "The computer scored a HIT!"
-          if player.player_board.cells[shot].ship.sunk? == true
-            puts "The computer sank your ship. Sorryyyy"
-          end
-        else player.player_board.cells[shot].empty? == true
-          puts "Woo the computer missed your ship!"
-        end
-        break
-      end
-    end
-  end
 end
