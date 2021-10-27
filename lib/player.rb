@@ -27,7 +27,7 @@ class Player
           puts "That coordinate is invalid. Try again!"
           redo
         else
-          cruiser_coordinates.sort << coordinate
+          cruiser_coordinates << coordinate
         end
       end
 
@@ -51,7 +51,7 @@ class Player
             puts "That coordinate is invalid. Try again!"
             redo
           else
-            submarine_coordinates.sort << coordinate
+            submarine_coordinates << coordinate
           end
       end
 
