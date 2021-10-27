@@ -14,7 +14,9 @@ computer = Computer.new(computer_board)
 player = Player.new(player_board)
 #require "pry"; binding.pry
 
-player.ship_placement
-player.shoot_at(computer)
+# player.ship_placement
+# player.shoot_at(computer)
 
-computer.shoot_at(player)
+# computer.shoot_at(player)
+
+battleship.greeting 

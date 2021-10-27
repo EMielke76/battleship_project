@@ -80,10 +80,14 @@ class Player
     end
     if computer.computer_board.cells[shot].empty? == false
       puts "Hit!"
+      if computer.computer_board.cells[shot].ship.sunk? == true
+        puts "You made it pull a Titanic! It gone."
+      end
     else
       puts "Miss!"
     end
     puts computer.computer_board.render
+    puts "-*-"*5
     puts @player_board.render(true)
   end
 end

@@ -13,6 +13,11 @@ class Battleship
     end
   end
 
+  def game_play(computer, player)
+    computer.place_cruiser
+    computer.place_submarine
+    player.ship_placement
+  end
 
-
+  
 end
