@@ -11,6 +11,14 @@ describe 'Computer' do
 
     expect(computer).to be_a(Computer)
   end
+
+  it 'has ships' do
+    board = Board.new
+    computer = Computer.new(board)
+
+    expect(computer.cruiser).to be_a(Ship)
+    expect(computer.submarine).to be_a(Ship)
+  end
 end
 
 describe '#place_ship' do
@@ -34,6 +42,7 @@ describe '#place_ship' do
     board = Board.new
     computer = Computer.new(board)
 
+    expect(computer.combined_select.length).to eq(2)
     expect(computer.combined_select).to be_a(String)
   end
 
@@ -46,7 +55,7 @@ describe '#place_ship' do
     expect(computer.computer_board.valid_coordinate?(combined_2)).to eq(false)
   end
 
-  describe '#place_cruiser' do
+  describe '#place_ship' do
     it 'places a cruiser if successful coordinates generated' do
       board = Board.new
       computer = Computer.new(board)
