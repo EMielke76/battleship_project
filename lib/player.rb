@@ -27,11 +27,10 @@ class Player
           puts "That coordinate is invalid. Try again!"
           redo
         else
-          cruiser_coordinates << coordinate
+          cruiser_coordinates.sort << coordinate
         end
       end
 
-      cruiser_coordinates.sort
       if @player_board.valid_placement?(@cruiser, cruiser_coordinates) == false
         puts "Those coordinates are invalid. Please try again!"
       end
@@ -52,11 +51,10 @@ class Player
             puts "That coordinate is invalid. Try again!"
             redo
           else
-            submarine_coordinates << coordinate
+            submarine_coordinates.sort << coordinate
           end
       end
 
-      submarine_coordinates.sort
       if @player_board.valid_placement?(@submarine, submarine_coordinates) == false
         puts "Those coordinates are invalid. Please try again!"
       end

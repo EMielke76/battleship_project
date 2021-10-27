@@ -4,6 +4,7 @@ require './lib/cell'
 require './lib/Battleship'
 require './lib/player'
 require './lib/computer'
+require './lib/turn'
 
 
 RSpec.describe 'Battleship game' do
@@ -13,9 +14,9 @@ RSpec.describe 'Battleship game' do
     expect(battleship).to be_a(Battleship)
   end
 
-  # it 'displays main menu' do
-  #   battleship = Battleship.new
-  #
-  #   expect(battleship.greeting).to
-  # end
+  it 'initializes a turn' do
+    battleship = Battleship.new
+
+    expect(battleship.turn).to be_a(Turn)
+  end
 end

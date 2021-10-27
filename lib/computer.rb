@@ -29,7 +29,6 @@ class Computer
       @cruiser.length.times do
         cruiser_coordinates << combined_select
       end
-      #require "pry"; binding.pry
       cruiser_coordinates.sort
       if @computer_board.valid_placement?(@cruiser, cruiser_coordinates) == true
         @computer_board.place(@cruiser, cruiser_coordinates)
@@ -46,7 +45,6 @@ class Computer
       @submarine.length.times do
         submarine_coordinates << combined_select
       end
-      #require "pry"; binding.pry
       submarine_coordinates.sort
       if @computer_board.valid_placement?(@submarine, submarine_coordinates) == true
         @computer_board.place(@submarine, submarine_coordinates)

@@ -3,10 +3,6 @@ class Battleship
 
   def initialize
     @turn = Turn.new
-    # @player_board = Board.new
-    # @computer_board = Board.new
-    # @computer = Computer.new(@computer_board)
-    # @player = Player.new(@player_board)
   end
 
 
@@ -28,7 +24,7 @@ class Battleship
     @turn.player.ship_placement
     until winning? do
       @turn.turn_prompt
-      @turn.shot_call#.shoot_at(computer)
+      @turn.shot_call
       @turn.shoot_at_player
     end
 
