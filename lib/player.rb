@@ -56,10 +56,11 @@ class Player
     puts "Here is your board"
     `say "Lets play!"`
     puts @player_board.render(true)
+    puts '### THE TITANIC CALLED ###'
   end
 
   def shoot_at(computer)
-    puts "-*-"*3 + " Computer Board " + "-*-"*3
+    puts "*$*"*3 + " Computer Board " + "*$*"*3
     puts computer.computer_board.render
     puts "-*-"*3 +" Your Board " + "-*-"*3
     puts @player_board.render(true)
@@ -79,15 +80,12 @@ class Player
       end
     end
     if computer.computer_board.cells[shot].empty? == false
-      puts "Hit!"
+      puts "** Hit! **"
       if computer.computer_board.cells[shot].ship.sunk? == true
-        puts "You made it pull a Titanic! It gone."
+        puts " *$* You made it pull a Titanic! It gone. *$*"
       end
     else
       puts "Miss!"
     end
-    puts computer.computer_board.render
-    puts "-*-"*5
-    puts @player_board.render(true)
   end
 end

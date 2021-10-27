@@ -6,8 +6,6 @@ require './lib/player'
 require './lib/computer'
 
 battleship = Battleship.new
-# battleship.greeting
-
 player_board = Board.new
 computer_board = Board.new
 computer = Computer.new(computer_board)
