@@ -1,4 +1,4 @@
-# Rails Engine
+# Battleship
 ![languages](https://img.shields.io/github/languages/top/EMielke76/battleship_project?color=red)
 ![PRs](https://img.shields.io/github/issues-pr-closed/EMielke76/battleship_project)
 ![rspec](https://img.shields.io/gem/v/rspec?color=blue&label=rspec)
